@@ -1,3 +1,5 @@
 .error_message {
-  color: red;
-}
+    color: rgb(201, 15, 15);
+    padding-top: 1rem;
+    font-weight: bold;
+  }
