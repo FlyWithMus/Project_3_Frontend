@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 
 const LoginForm = () => {
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { setToken } = useUserTokenContext();
+  const navigate = useNavigate();
 
   //cuando se entrega el formulario loguea al usuario
   const loginUser = async (e) => {
@@ -20,7 +22,7 @@ const LoginForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }), //enviamos email y pasword del formulario en el body
+        body: JSON.stringify({ email, password }), //enviamos email y password del formulario en el body
       });
 
       const body = await res.json();
@@ -36,6 +38,7 @@ const LoginForm = () => {
       setEmail("");
       setPassword("");
       toast.success("Logged succesfully!");
+      navigate("/"); //nos redirige a la home
     } catch (error) {
       setError(error.message);
     }
