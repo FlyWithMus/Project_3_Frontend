@@ -1,5 +1,6 @@
 import { getAllServicesEndpoint } from "../../api";
 import ServicesList from "../../components/ServicesList/ServicesList";
+import ErrorMessage from "../../components/ErrorMessage";
 import LoadingSpinner from "../../components/Spinner";
 import useFetch from "../../hooks/useFetch";
 
@@ -11,9 +12,9 @@ const ServicesPage = () => {
   if (loading) {
     return <LoadingSpinner />;
   }
-  // if (error) {
-  //   return <ErrorMessage error={error} />;
-  // }
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
 
   return (
     <section className="services">
