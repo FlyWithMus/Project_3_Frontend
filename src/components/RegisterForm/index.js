@@ -8,13 +8,14 @@ const RegisterForm = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ bio, setBio ] = useState("");
+    const [ picture, setPicture ] = useState("");
     const [ error, setError ] = useState("");
 
     const registerUser = async (e) => {
         try {
             e.preventDefault();
 
-            const userToRegister = { name, email, password };
+            const userToRegister = { name, email, password, picture };
 
             if (bio) userToRegister.bio = bio;
 
@@ -36,6 +37,7 @@ const RegisterForm = () => {
             setEmail("");
             setPassword("");
             setBio("");
+            setPicture("");
             toast.success("User registered successfully");
         } catch (error) {
             setError(error.message);
@@ -78,8 +80,18 @@ const RegisterForm = () => {
             <label htmlFor="bio">Bio:</label>
             <input
               id="bio"
-              type="bio"
+              type="text"
               value={bio}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+
+            <label htmlFor="picture">Picture:</label>
+            <input
+              id="picture"
+              type="file"
+              value={picture}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
