@@ -1,20 +1,22 @@
+import { Link } from "react-router-dom";
+// import { useUserTokenContext } from "../../contexts/UserTokenContext";
+
 const ServiceInfo = ({ service }) => {
+  // const { token } = useUserTokenContext();
   return (
     <article className="service_info">
       <h3>
-        {service.title} by USER {service.user_id}
+        {service.title} by {service.serviceAuthor}
       </h3>
       <p>{service.description}</p>
-      <a
-        href={`${process.env.REACT_APP_API_URL}/${service.service_file}`}
-        download
-      >
-        Accede aquí al archivo
-      </a>
-      <p>
-        This service has {service.status === 0 && "not"} been resolved{" "}
-        {service.status === 0 && "yet!"}
-      </p>
+      {service.status === 0 ? (
+        <>
+          <p>{service.serviceAuthor} hasn't found a solution yet,</p>
+          <Link to="/users"> Help {service.serviceAuthor}!</Link>
+        </>
+      ) : (
+        <p>This service has been succesfully resolved</p>
+      )}
     </article>
   );
 };

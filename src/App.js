@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "./pages/RegisterPage";
+import ServicePage from "./pages/ServicePage";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<ServicesPage />} />
+          <Route path="/service/:serviceId" element={<ServicePage />} />
           <Route path="/users" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
