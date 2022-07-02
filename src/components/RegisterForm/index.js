@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
@@ -9,21 +9,28 @@ const RegisterForm = () => {
     const [ password, setPassword ] = useState("");
     const [ bio, setBio ] = useState("");
     const [ error, setError ] = useState("");
+    const filesRef = useRef();
 
     const registerUser = async (e) => {
         try {
             e.preventDefault();
 
-            const userToRegister = { name, email, password };
+            const formData = new FormData();
+            const image = filesRef.current.files;
 
-            if (bio) userToRegister.bio = bio;
-
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("password", password);
+            if (bio) formData.append("bio", bio);
+            formData.append("picture", image);
+            console.log(formData);
+            console.log(formData.name);
             const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                  "Content-Type": "multipart/form-data",
                 },
-                body: JSON.stringify(userToRegister),
+                body: formData,
             });
 
             if (!res.ok) {
@@ -45,7 +52,7 @@ const RegisterForm = () => {
     return (
         <>
           <form onSubmit={registerUser}>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name*:</label>
             <input
               id="name"
               type="name"
@@ -78,11 +85,18 @@ const RegisterForm = () => {
             <label htmlFor="bio">Bio:</label>
             <input
               id="bio"
-              type="bio"
+              type="text"
               value={bio}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setBio(e.target.value);
               }}
+            />
+
+            <label htmlFor="picture">Picture:</label>
+            <input
+              id="picture"
+              type="file"
+              ref={filesRef}
             />
     
             <Button className="red_button">Register</Button>
