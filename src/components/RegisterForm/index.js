@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
@@ -8,23 +8,29 @@ const RegisterForm = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ bio, setBio ] = useState("");
-    const [ picture, setPicture ] = useState("");
     const [ error, setError ] = useState("");
+    const filesRef = useRef();
 
     const registerUser = async (e) => {
         try {
             e.preventDefault();
 
-            const userToRegister = { name, email, password, picture };
+            const formData = new FormData();
+            const image = filesRef.current.files;
 
-            if (bio) userToRegister.bio = bio;
-
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("password", password);
+            if (bio) formData.append("bio", bio);
+            formData.append("picture", image);
+            console.log(formData);
+            console.log(formData.name);
             const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                  "Content-Type": "multipart/form-data",
                 },
-                body: JSON.stringify(userToRegister),
+                body: formData,
             });
 
             if (!res.ok) {
@@ -37,7 +43,6 @@ const RegisterForm = () => {
             setEmail("");
             setPassword("");
             setBio("");
-            setPicture("");
             toast.success("User registered successfully");
         } catch (error) {
             setError(error.message);
@@ -47,7 +52,7 @@ const RegisterForm = () => {
     return (
         <>
           <form onSubmit={registerUser}>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name*:</label>
             <input
               id="name"
               type="name"
@@ -83,7 +88,7 @@ const RegisterForm = () => {
               type="text"
               value={bio}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setBio(e.target.value);
               }}
             />
 
@@ -91,10 +96,7 @@ const RegisterForm = () => {
             <input
               id="picture"
               type="file"
-              value={picture}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              ref={filesRef}
             />
     
             <Button className="red_button">Register</Button>
