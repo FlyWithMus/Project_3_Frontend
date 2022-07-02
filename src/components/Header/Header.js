@@ -13,16 +13,23 @@ const Header = () => {
       <nav>
         <ul>
           {token && (
-            <Link to="/services">
-              <li>Register a new service</li>
-            </Link>
+            <li>
+              <Link to="/services">Register a new service</Link>
+            </li>
           )}
-          <Link to="/users">
-            <li>Register</li>
-          </Link>
-          <Link to="/login">
-            <li>Login</li>
-          </Link>
+
+          {!token && (
+            <>
+              {" "}
+              <li>
+                <Link to="/users">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
+
           {token && (
             <li>
               <Button
