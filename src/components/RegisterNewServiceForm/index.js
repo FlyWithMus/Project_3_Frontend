@@ -19,15 +19,14 @@ const RegisterNewServiceForm = () => {
     try {
       e.preventDefault();
 
-      // if (!filesRef.current.files.length) {
-      //   throw new Error("You must upload at least one image");
-      // }
-
       const formData = new FormData();
 
       for (const image of filesRef.current.files) {
         formData.append("file", image);
       }
+
+      formData.append("title", title);
+      formData.append("description", description);
 
       const res = await fetch(`http://localhost:3000/services`, {
         method: "POST",
@@ -37,17 +36,17 @@ const RegisterNewServiceForm = () => {
         body: formData,
       });
 
+      const body = await res.json();
       if (!res.ok) {
-        const body = await res.json();
         throw new Error(body.message);
       }
 
-      // const {
-      //   data: { id },
-      // } = body;
+      const {
+        data: { id },
+      } = body;
 
       toast.success("Service registered succesfully");
-      // navigate(`/service/${id}`); //HOOK:redirige al service q acabamos de crear
+      navigate(`/service/${id}`); //HOOK:redirige al service q acabamos de crear
     } catch (error) {
       setError(error.message);
     }

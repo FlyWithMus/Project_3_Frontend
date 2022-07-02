@@ -37,7 +37,7 @@ const Header = () => {
                   setToken("");
                 }}
               >
-                Log out
+                <Link to="/">Log out</Link>
               </Button>
             </li>
           )}
