@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
-// import { UserTokenContext } from "../../contexts/UserTokenContext";
+import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import Button from "../Button";
+
+
+
 
 const Header = () => {
+  const { token, setToken } = useUserTokenContext();
   return (
     <header>
       <Link to="/">
@@ -10,12 +15,35 @@ const Header = () => {
       <p>Get your stuff done!</p>
       <nav>
         <ul>
-          <Link to="/users">
-            <li>Register</li>
-          </Link>
-          <Link to="/login">
-            <li>Login</li>
-          </Link>
+          {token && (
+            <li>
+              <Link to="/services">Register a new service</Link>
+            </li>
+          )}
+
+          {!token && (
+            <>
+              {" "}
+              <li>
+                <Link to="/users">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
+
+          {token && (
+            <li>
+              <Button
+                onClick={() => {
+                  setToken("");
+                }}
+              >
+                <Link to="/">Log out</Link>
+              </Button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "./pages/RegisterPage";
 import ServicePage from "./pages/ServicePage";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
+import RegisterNewServicePage from "./pages/RegisterNewServicePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<ServicesPage />} />
+          <Route path="/services" element={<RegisterNewServicePage />} />
           <Route path="/service/:serviceId" element={<ServicePage />} />
           <Route path="/users" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
