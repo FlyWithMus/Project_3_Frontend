@@ -1,5 +1,5 @@
 import { getAllServicesEndpoint } from "../../api";
-import ServicesList from "../../components/ServicesList/ServicesList";
+import ServicesList from "../../components/ServicesList";
 import ErrorMessage from "../../components/ErrorMessage";
 import LoadingSpinner from "../../components/Spinner";
 import useFetch from "../../hooks/useFetch";

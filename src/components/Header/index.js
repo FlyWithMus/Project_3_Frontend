@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
 
-
-
+import HeaderAvatar from "../HeaderAvatar";
 
 const Header = () => {
   const { token, setToken } = useUserTokenContext();
+
   return (
     <header>
       <Link to="/">
@@ -42,6 +42,14 @@ const Header = () => {
               >
                 <Link to="/">Log out</Link>
               </Button>
+            </li>
+          )}
+
+          {token && (
+            <li>
+              <Link to="/profile">
+                <HeaderAvatar />
+              </Link>
             </li>
           )}
         </ul>
