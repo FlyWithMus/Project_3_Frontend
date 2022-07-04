@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
@@ -43,7 +42,19 @@ const RegisterForm = () => {
             setEmail("");
             setPassword("");
             setBio("");
-            toast.success("User registered successfully");
+
+            const registered = await fetch(`${process.env.REACT_APP_API_URL}/checkemail`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              body: <h1>User registered. Check your email.</h1>,
+            });
+
+            if (!registered.ok) {
+              const body = await registered.json();
+              throw new Error(body.message);
+            }
         } catch (error) {
             setError(error.message);
         }

@@ -10,6 +10,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ServicePage from "./pages/ServicePage";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
 import RegisterNewServicePage from "./pages/RegisterNewServicePage";
+import CheckEmail from "./pages/CheckEmail";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/users" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/checkemail" element={<CheckEmail />} />
         </Routes>
       </main>
       <ToastContainer position="bottom-center" />
