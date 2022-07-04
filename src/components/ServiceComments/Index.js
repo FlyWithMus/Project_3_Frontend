@@ -2,6 +2,7 @@ import CommentsList from "../CommentsList";
 
 const ServiceWithComments = ({ serviceComments }) => {
   const [service, comments] = serviceComments;
+  console.log(serviceComments);
   console.log(service);
   console.log(comments);
   return (

@@ -16,6 +16,7 @@ const ServicePage = () => {
 
   const {
     data: serviceComments,
+    setData: setServiceComments,
     loading,
     error,
   } = useFetch(serviceCommentsEndpoint);
@@ -38,7 +39,11 @@ const ServicePage = () => {
       <section>
         <ServiceWithComments serviceComments={serviceComments} />
       </section>
-      <SubmitCommentForm serviceId={serviceId} />
+      <SubmitCommentForm
+        serviceId={serviceId}
+        serviceComments={serviceComments}
+        setServiceComments={setServiceComments}
+      />
     </>
   );
 };
