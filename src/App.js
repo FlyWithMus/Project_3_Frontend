@@ -10,7 +10,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ServicePage from "./pages/ServicePage";
 import ServicesPage from "./pages/ServicesPage";
 import RegisterNewServicePage from "./pages/RegisterNewServicePage";
-import ProfilePage from "./pages/ProfilePage.js";
+import ProfilePage from "./pages/ProfilePage";
 import CheckMyServicesPage from "./pages/CheckMyServicesPage";
 import CheckEmail from "./pages/CheckEmail";
 
