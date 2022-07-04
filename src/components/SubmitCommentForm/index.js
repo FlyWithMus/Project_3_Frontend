@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { submitCommentsEndpoint } from "../../api";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
-/** CHECK ERROR, NAVIGATE, CATCHING ERROR FROM BACK AND DISPLAY IT */
+/**  NAVIGATE */
 const SubmitCommentForm = ({ serviceId }) => {
   const { token } = useUserTokenContext();
   const navigate = useNavigate();
@@ -23,16 +23,10 @@ const SubmitCommentForm = ({ serviceId }) => {
       const solvedFile = filesRef.current.files[0];
       const formData = new FormData();
 
-      console.log(solvedFile);
-
       if (comment) {
         formData.append("comment", comment);
       }
       formData.append("solvedFile", solvedFile);
-
-      for (const pair of formData.entries()) {
-        console.log(pair[0] + "," + pair[1]);
-      }
 
       const commentRes = await fetch(toCommentEndpoint, {
         method: "POST",
@@ -41,7 +35,7 @@ const SubmitCommentForm = ({ serviceId }) => {
         },
         body: formData,
       });
-      const commentResBody = commentRes.json();
+      const commentResBody = await commentRes.json();
 
       if (!commentRes.ok) {
         throw new Error(commentResBody.message);
@@ -49,7 +43,7 @@ const SubmitCommentForm = ({ serviceId }) => {
       setComment("");
       toast.success("comments and files submited succesfully");
       console.log(serviceToComId);
-      navigate(`/service/${serviceToComId}`);
+      navigate(0);
     } catch (error) {
       setError(error.message);
     }
