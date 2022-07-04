@@ -12,9 +12,7 @@ import ServicesPage from "./pages/ServicesPage";
 import RegisterNewServicePage from "./pages/RegisterNewServicePage";
 import ProfilePage from "./pages/ProfilePage.js";
 import CheckMyServicesPage from "./pages/CheckMyServicesPage";
-import RegisterNewServicePage from "./pages/RegisterNewServicePage";
 import CheckEmail from "./pages/CheckEmail";
-
 
 function App() {
   return (
