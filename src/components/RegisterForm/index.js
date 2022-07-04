@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
@@ -9,6 +11,7 @@ const RegisterForm = () => {
   const [bio, setBio] = useState("");
   const [error, setError] = useState("");
   const filesRef = useRef();
+  const navigate = useNavigate();
 
   const registerUser = async (e) => {
     try {
@@ -40,6 +43,7 @@ const RegisterForm = () => {
       setPassword("");
       setBio("");
       toast.success("User registered successfully");
+      navigate("/checkEmail");
     } catch (error) {
       setError(error.message);
     }
