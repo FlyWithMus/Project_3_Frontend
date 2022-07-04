@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
@@ -45,6 +44,7 @@ const RegisterForm = () => {
       setError(error.message);
     }
   };
+
 
   return (
     <>
