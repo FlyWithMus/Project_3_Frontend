@@ -6,14 +6,20 @@ import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
-/**  NAVIGATE */
-const SubmitCommentForm = ({ serviceId }) => {
+/**  NAVIGATE AYUDA CON SETSERVICECOMMENTS [{},[]]*/
+const SubmitCommentForm = ({
+  serviceId,
+  serviceComments,
+  setServiceComments,
+}) => {
   const { token } = useUserTokenContext();
   const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const filesRef = useRef();
   const serviceToComId = serviceId;
+  const [service, comments] = serviceComments;
+  console.log(service);
 
   const submitComment = async (e) => {
     try {
@@ -41,9 +47,10 @@ const SubmitCommentForm = ({ serviceId }) => {
         throw new Error(commentResBody.message);
       }
       setComment("");
-      toast.success("comments and files submited succesfully");
-      console.log(serviceToComId);
-      navigate(0);
+      toast.success(commentResBody.message);
+      // navigate(0);
+      setServiceComments([{ ...service }, [...comments, comment]]);
+      console.log(service, comments);
     } catch (error) {
       setError(error.message);
     }

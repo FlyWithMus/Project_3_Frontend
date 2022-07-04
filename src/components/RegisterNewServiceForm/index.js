@@ -21,9 +21,9 @@ const RegisterNewServiceForm = () => {
 
       const formData = new FormData();
 
-      for (const image of filesRef.current.files) {
-        formData.append("file", image);
-      }
+      const image = filesRef.current.files[0];
+
+      formData.append("file", image);
 
       formData.append("title", title);
       formData.append("description", description);
