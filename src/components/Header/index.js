@@ -47,7 +47,7 @@ const Header = () => {
 
           {token && (
             <li>
-              <Link to="/profile">
+              <Link to="/user">
                 <HeaderAvatar />
               </Link>
             </li>

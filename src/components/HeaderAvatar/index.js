@@ -10,7 +10,7 @@ const HeaderAvatar = () => {
     return <Spinner />;
   }
 
-  return <Avatar avatar={user.avatar} username={user.name} />;
+  return <Avatar avatar={user.picture} username={user.name} />;
 };
 
 export default HeaderAvatar;

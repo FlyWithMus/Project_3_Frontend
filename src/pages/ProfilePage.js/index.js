@@ -24,14 +24,14 @@ const ProfilePage = () => {
   }
 
   return (
-    <section className="profile">
+    <section className="user">
       <h2>User profile</h2>
 
       {user && (
         <>
           <section className="user_info">
             <h2>My info</h2>
-            <Avatar avatar={user?.avatar} username={user?.name} />
+            <Avatar avatar={user?.picture} username={user?.name} />
 
             <p>Name: {user?.name}</p>
             <p>Email: {user?.email}</p>
@@ -41,7 +41,7 @@ const ProfilePage = () => {
             <h2>My services</h2>
 
             {user?.services.length ? (
-              <ServicesList entries={user?.services} />
+              <ServicesList services={user?.services} />
             ) : (
               <p>No services</p>
             )}
