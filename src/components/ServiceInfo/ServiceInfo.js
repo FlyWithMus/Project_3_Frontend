@@ -7,7 +7,7 @@ const ServiceInfo = ({ service }) => {
     <article className="service_info">
       <h3>
         <Link to={"/service/" + service.id}>
-          {service.title} by {service.serviceAuthor}
+          {service.title} ({service.serviceAuthor})
         </Link>
       </h3>
       <p>{service.description}</p>
