@@ -10,7 +10,7 @@ import useUser from "../../hooks/useUser";
 const ProfilePage = () => {
   const { token } = useUserTokenContext();
   const { user, loading, error } = useUser();
-
+  console.log(user);
   if (!token) {
     return <Navigate to="/login" />;
   }
@@ -31,17 +31,17 @@ const ProfilePage = () => {
         <>
           <section className="user_info">
             <h2>My info</h2>
-            <Avatar avatar={user?.picture} username={user?.name} />
+            <Avatar avatar={user.picture} username={user.name} />
 
-            <p>Name: {user?.name}</p>
-            <p>Email: {user?.email}</p>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
           </section>
 
           <section>
             <h2>My services</h2>
 
-            {user?.services.length ? (
-              <ServicesList services={user?.services} />
+            {user.services.length ? (
+              <ServicesList services={user.services} />
             ) : (
               <p>No services</p>
             )}
