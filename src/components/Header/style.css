@@ -6,6 +6,7 @@
   padding: 2rem;
   background-color: rgb(132, 182, 203);
 }
+
 .header ul li {
   display: flex;
 }
