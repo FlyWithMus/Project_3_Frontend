@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
-import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
