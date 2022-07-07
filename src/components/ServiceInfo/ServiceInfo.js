@@ -1,3 +1,5 @@
+import "./style.css";
+
 import { Link } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 
@@ -18,7 +20,7 @@ const ServiceInfo = ({ service }) => {
             <Link to="/users"> Help {service.serviceAuthor}!</Link>
           </>
         ) : (
-          <p>This service has been succesfully resolved</p>
+          <p>This service has been succesfully resolved ✍️</p>
         ))}
     </article>
   );
