@@ -1,4 +1,3 @@
-import "./style.css";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { Navigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
@@ -30,15 +29,14 @@ const ProfilePage = () => {
       {user && (
         <>
           <section className="user_info">
-            <h2>My info</h2>
-            <Avatar avatar={user.picture} username={user.name} />
-
+            <h3>My info</h3>
             <p>Name: {user.name}</p>
-            <p>Email: {user.email}</p>
+            <p>Email: {user.email}</p>{" "}
+            <Avatar avatar={user.picture} username={user.name} />
           </section>
 
           <section>
-            <h2>My services</h2>
+            <h3>My services</h3>
 
             {user.services.length ? (
               <ServicesList services={user.services} />

@@ -1,3 +1,4 @@
+import "./style.css";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
