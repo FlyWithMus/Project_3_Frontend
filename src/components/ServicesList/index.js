@@ -1,3 +1,4 @@
+import "./styles.css";
 import List from "../List/List";
 import ServiceInfo from "../ServiceInfo/ServiceInfo";
 

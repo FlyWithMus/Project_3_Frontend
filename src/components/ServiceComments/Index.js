@@ -10,10 +10,10 @@ const ServiceWithComments = ({ serviceComments }) => {
       <section>
         {service.serviceAuthor ? (
           <h2>
-            {service.title} by {service.serviceAuthor}
+            {service.title} ({service.serviceAuthor})
           </h2>
         ) : (
-          <h2> {service.title} by Anonymous author</h2>
+          <h2> {service.title} (Anonymous author)</h2>
         )}
 
         <p>{service.description}</p>

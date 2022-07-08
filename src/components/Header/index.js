@@ -1,23 +1,26 @@
+import "./style.css";
 import { Link } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
-
 import HeaderAvatar from "../HeaderAvatar";
 
 const Header = () => {
   const { token, setToken } = useUserTokenContext();
 
   return (
-    <header>
+    <header className="header">
+      <nav>{token && <Link to="/services">Register a new service</Link>}</nav>
+
       <Link to="/">
         <h1>Freelance Services Platform</h1>
       </Link>
-      <p>Get your stuff done!</p>
+      <p>Get your stuff done! 👀 </p>
       <nav>
         <ul>
+
           {token && (
             <>
-              {" "}
+           
               <li>
                 <Link to="/services">Register a new service</Link>
               </li>
@@ -26,10 +29,9 @@ const Header = () => {
               </li>
             </>
           )}
-
+          
           {!token && (
             <>
-              {" "}
               <li>
                 <Link to="/users">Register</Link>
               </li>

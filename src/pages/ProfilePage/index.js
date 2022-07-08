@@ -1,4 +1,3 @@
-import "./style.css";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { Navigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
@@ -32,6 +31,7 @@ const ProfilePage = () => {
       {user && (
         <>
           <section className="user_info">
+
             <h2>My info</h2>
             <Avatar avatar={user.picture} username={user.name} />
             <ProfileForm user={user} setUser={setUser} />
