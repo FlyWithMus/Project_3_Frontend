@@ -5,6 +5,7 @@
   justify-content: space-around;
   padding: 2rem;
   background-color: rgb(132, 182, 203);
+  align-items: center;
 }
 
 .header ul li {
