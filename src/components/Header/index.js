@@ -9,18 +9,14 @@ const Header = () => {
 
   return (
     <header className="header">
-      <nav>{token && <Link to="/services">Register a new service</Link>}</nav>
-
       <Link to="/">
         <h1>Freelance Services Platform</h1>
       </Link>
       <p>Get your stuff done! 👀 </p>
       <nav>
         <ul>
-
           {token && (
             <>
-           
               <li>
                 <Link to="/services">Register a new service</Link>
               </li>
@@ -29,7 +25,7 @@ const Header = () => {
               </li>
             </>
           )}
-          
+
           {!token && (
             <>
               <li>
