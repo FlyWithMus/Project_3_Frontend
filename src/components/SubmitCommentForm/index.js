@@ -6,7 +6,6 @@ import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
-/**  NAVIGATE AYUDA CON SETSERVICECOMMENTS [{},[]]*/
 const SubmitCommentForm = ({
   serviceId,
   serviceComments,
@@ -19,7 +18,7 @@ const SubmitCommentForm = ({
   const filesRef = useRef();
   const serviceToComId = serviceId;
   const [service, comments] = serviceComments;
-  console.log(service);
+  console.log(serviceComments);
 
   const submitComment = async (e) => {
     try {
@@ -48,9 +47,8 @@ const SubmitCommentForm = ({
       }
       setComment("");
       toast.success(commentResBody.message);
-      // navigate(0);
-      setServiceComments([{ ...service }, [...comments, comment]]);
-      console.log(service, comments);
+      console.log(commentResBody.data);
+      setServiceComments([{ ...service }, [...comments, commentResBody.data]]);
     } catch (error) {
       setError(error.message);
     }

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
-import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -25,7 +24,9 @@ const RegisterForm = () => {
       formData.append("email", email);
       formData.append("password", password);
       if (bio) formData.append("bio", bio);
-      formData.append("picture", image);
+      if (image) {
+        formData.append("picture", image);
+      }
       console.log(formData);
       console.log(formData.name);
       const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
@@ -56,7 +57,7 @@ const RegisterForm = () => {
         <label htmlFor="name">Name*:</label>
         <input
           id="name"
-          type="name"
+          type="text"
           value={name}
           onChange={(e) => {
             setName(e.target.value);
