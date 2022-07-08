@@ -17,9 +17,21 @@ const Header = () => {
       <p>Get your stuff done! 👀 </p>
       <nav>
         <ul>
+
+          {token && (
+            <>
+           
+              <li>
+                <Link to="/services">Register a new service</Link>
+              </li>
+              <li>
+                <Link to="/myservices">Check my services</Link>
+              </li>
+            </>
+          )}
+          
           {!token && (
             <>
-              {" "}
               <li>
                 <Link to="/users">Register</Link>
               </li>

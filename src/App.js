@@ -28,8 +28,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user" element={<ProfilePage />} />
           <Route path="/myservices" element={<CheckMyServicesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+
           <Route path="/checkemail" element={<CheckEmail />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <ToastContainer position="bottom-center" />
