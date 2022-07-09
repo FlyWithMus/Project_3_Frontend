@@ -46,7 +46,7 @@ const CheckMyServiceInfo = ({ service }) => {
           </button>
         </>
       ) : (
-        <p>This service has been succesfully resolved</p>
+        <p>This service has been succesfully resolved ✍️</p>
       )}
       {error && <ErrorMessage error={error} />}
     </article>

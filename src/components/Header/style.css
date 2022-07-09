@@ -21,7 +21,7 @@
 }
 
 .header a {
-  color: rgb(195, 127, 63);
+  color: rgba(0, 0, 0, 50%);
 }
 
 .header nav button a {
