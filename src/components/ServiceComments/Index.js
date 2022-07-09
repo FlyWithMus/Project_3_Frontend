@@ -1,3 +1,4 @@
+import "./style.css";
 import CommentsList from "../CommentsList";
 
 const ServiceWithComments = ({ serviceComments }) => {
@@ -30,7 +31,7 @@ const ServiceWithComments = ({ serviceComments }) => {
         )}
       </section>
       {comments.length > 0 && (
-        <section>
+        <section className="comments">
           <CommentsList comments={comments} />
         </section>
       )}

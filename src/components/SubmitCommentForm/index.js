@@ -1,5 +1,6 @@
+import "./style.css";
 import { useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { submitCommentsEndpoint } from "../../api";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
@@ -12,7 +13,7 @@ const SubmitCommentForm = ({
   setServiceComments,
 }) => {
   const { token } = useUserTokenContext();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const filesRef = useRef();
@@ -62,13 +63,13 @@ const SubmitCommentForm = ({
     <>
       <form onSubmit={submitComment}>
         <label htmlFor="comment">Introduce your comment here: </label>
-        <input
+        <textarea
           id="comment"
           value={comment}
           onChange={(e) => {
             setComment(e.target.value);
           }}
-        ></input>
+        />
 
         <label htmlFor="file">Upload your file here: </label>
         <input id="file" type="file" ref={filesRef}></input>

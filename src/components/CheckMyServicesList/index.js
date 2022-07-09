@@ -3,17 +3,20 @@ import CheckMyServiceInfo from "../CheckMyServiceInfo";
 
 const CheckMyServicesList = ({ services }) => {
   return (
-    <List
-      className="services_list"
-      data={services}
-      render={(service) => {
-        return (
-          <li key={service.id}>
-            <CheckMyServiceInfo service={service} />
-          </li>
-        );
-      }}
-    />
+    <>
+      <h2>Check My Services</h2>
+      <List
+        className="services_list"
+        data={services}
+        render={(service) => {
+          return (
+            <li key={service.id}>
+              <CheckMyServiceInfo service={service} />
+            </li>
+          );
+        }}
+      />{" "}
+    </>
   );
 };
 

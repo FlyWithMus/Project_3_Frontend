@@ -3,21 +3,6 @@
   height: 200px;
   object-fit: cover;
 }
-/* 
-.user h2 {
-  margin-bottom: 1rem;
-}
-.user h3 {
-  margin-bottom: 1rem;
-}
-.user p {
-  margin-bottom: 0.5rem;
-  font-weight: lighter;
-}
-
-.user section {
-  margin-bottom: 1rem;
-} */
 .delete_user h2 {
   color: black;
 }

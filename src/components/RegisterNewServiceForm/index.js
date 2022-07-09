@@ -68,7 +68,7 @@ const RegisterNewServiceForm = () => {
         />
 
         <label htmlFor="description">Description:</label>
-        <input
+        <textarea
           id="description"
           value={description}
           onChange={(e) => {
