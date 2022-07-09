@@ -85,14 +85,24 @@ const RegisterForm = () => {
         />
 
         <label htmlFor="bio">Bio:</label>
-        <input
+        {/* <input
           id="bio"
           type="text"
           value={bio}
           onChange={(e) => {
             setBio(e.target.value);
-          }}
-        />
+        }}
+        /> */}
+        <textarea 
+          id="bio" 
+          rows="5" 
+          cols="60" 
+          value={bio} 
+          onChange={(e) => {
+            setBio(e.target.value);
+          }}>
+          Enter your bio...
+        </textarea>&nbsp;
 
         <label htmlFor="picture">Picture:</label>
         <input id="picture" type="file" ref={filesRef} />
