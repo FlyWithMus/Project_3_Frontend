@@ -11,21 +11,21 @@ const Header = () => {
     <header className="header">
       <Link to="/">
         <h1>Freelance Services Platform</h1>
+        <p>Get your stuff done! 👀 </p>
       </Link>
-      <p>Get your stuff done! 👀 </p>
+      <nav>
+        <>
+          {" "}
+          {token && (
+            <li>
+              <Link to="/myservices">Check my services</Link>
+            </li>
+          )}
+          {token && <Link to="/services">Register a new service</Link>}
+        </>
+      </nav>
       <nav>
         <ul>
-          {token && (
-            <>
-              <li>
-                <Link to="/services">Register a new service</Link>
-              </li>
-              <li>
-                <Link to="/myservices">Check my services</Link>
-              </li>
-            </>
-          )}
-
           {!token && (
             <>
               <li>

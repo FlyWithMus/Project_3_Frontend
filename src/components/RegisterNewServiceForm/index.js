@@ -1,9 +1,8 @@
-// import "./style.css";
+import "./style.css";
 import { useState, useRef } from "react";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { toast } from "react-toastify";
 import { useNavigate, Navigate } from "react-router-dom";
-// import { CloudUploadOutlined } from "@ant-design/icons";
 import ErrorMessage from "../ErrorMessage";
 import Button from "../Button";
 
@@ -77,7 +76,7 @@ const RegisterNewServiceForm = () => {
           }}
         />
 
-        <label htmlFor="file">{/* <CloudUploadOutlined /> */} Images</label>
+        <label htmlFor="file"> Images</label>
         <input type="file" id="file" ref={filesRef} />
 
         <Button className="red_button"> Send service </Button>
