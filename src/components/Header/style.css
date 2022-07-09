@@ -19,3 +19,7 @@
   font-size: smaller;
   color: white;
 }
+
+.header a {
+  color: rgb(195, 127, 63);
+}
