@@ -1,3 +1,4 @@
+import "./style.css";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { updateProfileEndpoint } from "../../api";
@@ -88,9 +89,12 @@ const ProfileForm = ({ user, setUser }) => {
       />
 
       <label htmlFor="bio">Bio: </label>
-      <input
+      <textarea
+        className="textarea"
+        rows="20"
+        cols="10"
         id="bio"
-        type="text"
+        type="textarea"
         value={newBio}
         onChange={(e) => {
           setNewBio(e.target.value);
