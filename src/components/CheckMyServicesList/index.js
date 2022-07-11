@@ -4,7 +4,7 @@ import CheckMyServiceInfo from "../CheckMyServiceInfo";
 const CheckMyServicesList = ({ services }) => {
   return (
     <>
-      <h2>Check My Services</h2>
+      <h2>My Services</h2>
       <List
         className="services_list"
         data={services}

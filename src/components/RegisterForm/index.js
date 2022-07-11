@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { profileEndpoint } from "../../api";
 import Button from "../Button";
 import ErrorMessage from "../ErrorMessage";
 
@@ -29,22 +30,20 @@ const RegisterForm = () => {
       }
       console.log(formData);
       console.log(formData.name);
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      const res = await fetch(profileEndpoint(), {
         method: "POST",
         body: formData,
       });
-
+      const body = await res.json();
       if (!res.ok) {
-        const body = await res.json();
         throw new Error(body.message);
       }
-
       setError("");
       setName("");
       setEmail("");
       setPassword("");
       setBio("");
-      toast.success("User registered successfully");
+      toast.success(body.message);
       navigate("/checkEmail");
     } catch (error) {
       setError(error.message);
@@ -63,7 +62,6 @@ const RegisterForm = () => {
             setName(e.target.value);
           }}
         />
-
         <label htmlFor="email">Email*:</label>
         <input
           id="email"
@@ -73,7 +71,6 @@ const RegisterForm = () => {
             setEmail(e.target.value);
           }}
         />
-
         <label htmlFor="password">Password*:</label>
         <input
           id="password"
@@ -83,30 +80,21 @@ const RegisterForm = () => {
             setPassword(e.target.value);
           }}
         />
-
         <label htmlFor="bio">Bio:</label>
-        {/* <input
+        <textarea
           id="bio"
-          type="text"
+          rows="5"
+          cols="60"
           value={bio}
           onChange={(e) => {
             setBio(e.target.value);
-        }}
-        /> */}
-        <textarea 
-          id="bio" 
-          rows="5" 
-          cols="60" 
-          value={bio} 
-          onChange={(e) => {
-            setBio(e.target.value);
-          }}>
+          }}
+        >
           Enter your bio...
-        </textarea>&nbsp;
-
+        </textarea>
+        &nbsp;
         <label htmlFor="picture">Picture:</label>
         <input id="picture" type="file" ref={filesRef} />
-
         <Button className="red_button">Register</Button>
       </form>
 

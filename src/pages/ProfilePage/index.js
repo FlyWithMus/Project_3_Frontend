@@ -2,27 +2,15 @@ import "./style.css";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { Navigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-// import ServicesList from "../../components/ServicesList";
-import Spinner from "../../components/Spinner";
-import ErrorMessage from "../../components/ErrorMessage";
-import useUser from "../../hooks/useUser";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import DeleteButton from "../../components/Deletebutton";
 
-const ProfilePage = () => {
+const ProfilePage = ({ user, setUser }) => {
   const { token } = useUserTokenContext();
-  const { user, setUser, loading, error } = useUser();
+
   console.log(user);
   if (!token) {
     return <Navigate to="/login" />;
-  }
-
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <ErrorMessage error={error} />;
   }
 
   return (
@@ -36,16 +24,6 @@ const ProfilePage = () => {
             <Avatar avatar={user.picture} username={user.name} />
             <ProfileForm user={user} setUser={setUser} />
           </section>
-
-          {/* <section>
-            <h2>My services</h2>
-
-            {user.services.length ? (
-              <ServicesList services={user.services} />
-            ) : (
-              <p>No services</p>
-            )}
-          </section> */}
 
           <section className="delete_user">
             <h2>Delete Your Account</h2>

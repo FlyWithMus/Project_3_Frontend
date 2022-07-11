@@ -10,7 +10,6 @@ const CheckMyServiceInfo = ({ service }) => {
   const statusEndpoint = setStatusEndpoint(service.id);
   const { token } = useUserTokenContext();
   const [error, setError] = useState("");
-  console.log(status);
   const setStatusResolved = async (e) => {
     try {
       e.preventDefault();
