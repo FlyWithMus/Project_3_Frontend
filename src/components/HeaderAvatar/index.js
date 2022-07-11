@@ -1,15 +1,7 @@
 import "./style.css";
-import useUser from "../../hooks/useUser";
 import Avatar from "../Avatar";
-import Spinner from "../Spinner";
 
-const HeaderAvatar = () => {
-  const { user, loading } = useUser();
-
-  if (loading) {
-    return <Spinner />;
-  }
-
+const HeaderAvatar = ({ user }) => {
   return <Avatar avatar={user.picture} username={user.name} />;
 };
 

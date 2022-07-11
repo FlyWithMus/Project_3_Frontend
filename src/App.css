@@ -50,9 +50,23 @@ form {
   border-radius: 5px;
   padding: 1rem;
   margin: 2rem;
-  min-width: 18rem;
+  max-width: 100%;
   min-height: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+textarea {
+  width: 70%;
+  height: 10rem;
+  padding: 0.5rem;
+  outline: none;
+}
+
+input {
+  width: 70%;
+}
+label {
+  padding-bottom: 1rem;
 }

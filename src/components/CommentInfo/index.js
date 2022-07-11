@@ -1,7 +1,7 @@
 import "./style.css";
 const CommentInfo = ({ comment }) => {
   return (
-    <section>
+    <section className="comment_info">
       {comment.comment && <p>{comment.comment}</p>}
       {comment.solved_file && (
         <a

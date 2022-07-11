@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
+import { loginEndpoint } from "../../api";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -17,29 +18,27 @@ const LoginForm = () => {
     try {
       e.preventDefault();
 
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
-        //fech al back
+      const res = await fetch(loginEndpoint(), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }), //enviamos email y password del formulario en el body
+        body: JSON.stringify({ email, password }),
       });
 
       const body = await res.json();
 
       if (!res.ok) {
-        //si la respuesta vino mal lanzamos el error
         throw new Error(body.message);
       }
 
       setToken(body.data.token);
 
-      setError(""); //si fue correcto se vacía el error
+      setError("");
       setEmail("");
       setPassword("");
-      toast.success("Logged succesfully!");
-      navigate("/"); //nos redirige a la home
+      toast.success(body.message);
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
@@ -52,9 +51,8 @@ const LoginForm = () => {
         <input
           id="email"
           type="email"
-          value={email} //este es el estado q hemos creado email(controlado)alcambiar el valor del input cambia nuestro estado y a la inversa
+          value={email}
           onChange={(e) => {
-            //actualizamos el estado cuando se realice un cambio
             setEmail(e.target.value);
           }}
         />
@@ -63,7 +61,7 @@ const LoginForm = () => {
         <input
           id="password"
           type="password"
-          value={password} //nos traemos el estado password(controlado)
+          value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}

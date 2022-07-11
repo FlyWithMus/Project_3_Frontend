@@ -1,7 +1,6 @@
-import "./style.css";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { updateProfileEndpoint } from "../../api";
+import { profileEndpoint } from "../../api";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 
 const ProfileForm = ({ user, setUser }) => {
@@ -40,7 +39,7 @@ const ProfileForm = ({ user, setUser }) => {
         formData.append("picture", profPicture);
       }
 
-      const res = await fetch(updateProfileEndpoint(), {
+      const res = await fetch(profileEndpoint(), {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

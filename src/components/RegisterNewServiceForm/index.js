@@ -1,16 +1,16 @@
-import "./style.css";
 import { useState, useRef } from "react";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import { toast } from "react-toastify";
 import { useNavigate, Navigate } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 import Button from "../Button";
+import { registerNewServiceEndpoint } from "../../api";
 
 const RegisterNewServiceForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
-  const filesRef = useRef(); //los imputs de tipo fichero no pueden ser controlados, se utiliza filesRef(son objetos con la propiedad current:undefined por defecto, no la crea desde cero cada vez)las podemos enganchar a un elemento del DOM.
+  const filesRef = useRef();
   const { token } = useUserTokenContext();
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const RegisterNewServiceForm = () => {
       formData.append("title", title);
       formData.append("description", description);
 
-      const res = await fetch(`http://localhost:3000/services`, {
+      const res = await fetch(registerNewServiceEndpoint(), {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -44,15 +44,15 @@ const RegisterNewServiceForm = () => {
         data: { id },
       } = body;
 
-      toast.success("Service registered succesfully");
-      navigate(`/service/${id}`); //HOOK:redirige al service q acabamos de crear
+      toast.success(body.message);
+      navigate(`/service/${id}`);
     } catch (error) {
       setError(error.message);
     }
   };
 
   if (!token) {
-    return <Navigate to="/login" />; // COMPONENTE:si no hay token, nos redirige a login
+    return <Navigate to="/login" />;
   }
 
   return (

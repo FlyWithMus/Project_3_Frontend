@@ -13,12 +13,14 @@ import ServicesPage from "./pages/ServicesPage";
 import RegisterNewServicePage from "./pages/RegisterNewServicePage";
 import ProfilePage from "./pages/ProfilePage";
 import CheckMyServicesPage from "./pages/CheckMyServicesPage";
-import CheckEmail from "./pages/CheckEmail";
+import CheckEmailPage from "./pages/CheckEmailPage";
+import useUser from "./hooks/useUser";
 
 function App() {
+  const { user, setUser } = useUser();
   return (
     <BrowserRouter>
-      <Header />
+      <Header user={user} />
       <main>
         <Routes>
           <Route path="/" element={<ServicesPage />} />
@@ -26,10 +28,12 @@ function App() {
           <Route path="/service/:serviceId" element={<ServicePage />} />
           <Route path="/users" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/user" element={<ProfilePage />} />
+          <Route
+            path="/user"
+            element={<ProfilePage user={user} setUser={setUser} />}
+          />
           <Route path="/myservices" element={<CheckMyServicesPage />} />
-
-          <Route path="/checkemail" element={<CheckEmail />} />
+          <Route path="/checkemail" element={<CheckEmailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

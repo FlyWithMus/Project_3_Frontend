@@ -4,7 +4,7 @@ import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button";
 import HeaderAvatar from "../HeaderAvatar";
 
-const Header = () => {
+const Header = ({ user }) => {
   const { token, setToken } = useUserTokenContext();
 
   return (
@@ -50,9 +50,9 @@ const Header = () => {
           )}
 
           {token && (
-            <li>
+            <li className="li_avatar">
               <Link to="/user">
-                <HeaderAvatar />
+                <HeaderAvatar user={user} />
               </Link>
             </li>
           )}
